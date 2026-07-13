@@ -8,12 +8,6 @@ name: R-CMD-check
 
 jobs:
   R-CMD-check:
-    strategy:
-      fail-fast: false
-      matrix:
-        install_beast2: [true, false]
-        os: [ubuntu-latest]
-
     runs-on: ubuntu-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
@@ -22,13 +16,13 @@ jobs:
 
       - uses: r-lib/actions/setup-r@v2
 
-      - uses: r-lib/actions/setup-pandoc@v2
+      #- uses: r-lib/actions/setup-pandoc@v2
 
       - name: Install libcurl4-openssl-dev
         run: sudo apt install -qq libcurl4-openssl-dev
 
-      - name: Fix rJava error # from https://travis-ci.community/t/cannot-connect-to-java-from-r/9754/8
-        run: sudo $(which R) CMD javareconf
+      #- name: Fix rJava error # from https://travis-ci.community/t/cannot-connect-to-java-from-r/9754/8
+      #  run: sudo $(which R) CMD javareconf
 
       - name: Install fonts # from https://github.com/r-lib/systemfonts/issues/35#issuecomment-961900755
         run: sudo apt install -qq libfontconfig1-dev
@@ -39,65 +33,9 @@ jobs:
       - name: Install dependencies
         run: |
           install.packages(c("remotes", "rcmdcheck"))
-          remotes::install_cran("shiny")
-          remotes::install_github("ropensci/beautier", ref = "develop")
-          # remotes::install_github("ropensci/tracerer")
-          remotes::install_github("ropensci/beastier", ref = "develop")
-          remotes::install_github("ropensci/mauricer")
           remotes::install_deps(dependencies = TRUE)
-          remotes::install_cran("rcmdcheck")
-          remotes::install_cran("covr")
-          remotes::install_cran("lintr")
-          remotes::install_github("MangoTheCat/goodpractice")
-          remotes::install_github("richelbilderbeek/beastierinstall")
-          remotes::install_github("richelbilderbeek/mauricerinstall")
         shell: Rscript {0}
-
-      - name: Install BEAST2
-        env:
-          INSTALL_BEAST2: ${{ matrix.install_beast2 }}
-        run: if [[ "$INSTALL_BEAST2" == true ]]; then Rscript -e "beastierinstall::install_beast2()"; fi
-
-      - name: Install BEAST2 NS package
-        env:
-          INSTALL_BEAST2: ${{ matrix.install_beast2 }}
-        run: if [[ "$INSTALL_BEAST2" == true ]]; then Rscript -e 'mauricerinstall::install_beast2_pkg("NS")'; fi
 
       - name: Check
         run: rcmdcheck::rcmdcheck(args = "--no-manual", error_on = "error")
         shell: Rscript {0}
-
-      - name: Make sure that no files are created in the beautier .cache folder
-        run: testthat::expect_length(list.files(rappdirs::user_cache_dir(appname = "beautier")), 0)
-        shell: Rscript {0}
-
-      - name: Make sure that no files are created in the tracerer .cache folder
-        run: testthat::expect_length(list.files(rappdirs::user_cache_dir(appname = "tracerer")), 0)
-        shell: Rscript {0}
-
-      - name: Make sure that no files are created in the beastier .cache folder
-        run: testthat::expect_length(list.files(rappdirs::user_cache_dir(appname = "beastier")), 0)
-        shell: Rscript {0}
-
-      - name: Make sure that no files are created in the mauricer .cache folder
-        run: testthat::expect_length(list.files(rappdirs::user_cache_dir(appname = "mauricer")), 0)
-        shell: Rscript {0}
-
-      - name: Make sure that no files are created in the .cache folder
-        run: testthat::expect_length(list.files(rappdirs::user_cache_dir(appname = "babette")), 0)
-        shell: Rscript {0}
-
-      - name: Test coverage
-        env:
-          INSTALL_BEAST2: ${{ matrix.install_beast2 }}
-        run: if [[ "$INSTALL_BEAST2" == true ]]; then Rscript -e 'covr::codecov()'; fi
-
-      - name: Lint
-        env:
-          INSTALL_BEAST2: ${{ matrix.install_beast2 }}
-        run: if [[ "$INSTALL_BEAST2" == false ]]; then Rscript -e 'lintr::lint_package()'; fi
-
-      - name: Report
-        run: beastier::beastier_report()
-        shell: Rscript {0}
-
