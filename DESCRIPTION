@@ -2,9 +2,13 @@ Package: splimata
 Title: Convert a MkDocs file to one Markdown file per language tab.
 Version: 0.1
 License: GPL-3
-RoxygenNote: 7.3.3.9000
 VignetteBuilder: knitr
 URL: https://github.com/richelbilderbeek/splimata
 BugReports: https://github.com/richelbilderbeek/splimata
 Language: en-US
 Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+Config/roxygen2/version: 8.0.0
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
