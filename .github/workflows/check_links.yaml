@@ -22,11 +22,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: remove files that need no checking
+      - name: empty files that need no checking
         run: |
-          rm -rf inst/extdata
-          rm -rf inst/
-          ls
+          echo "empty" > inst/extdata/example_1.md
+          echo "empty" > inst/extdata/example_1_en.md
+          echo "empty" > inst/extdata/example_1_sv.md
+          echo "empty" > inst/extdata/example_2.md
 
       - uses: gaurav-nelson/github-action-markdown-link-check@v1
         with:
