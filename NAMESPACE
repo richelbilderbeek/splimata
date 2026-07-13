@@ -3,4 +3,5 @@
 export(count_n_unique_emojis)
 export(get_splimata_path)
 export(get_unique_emojis)
+export(get_unique_language_codes)
 export(split_tabs)
