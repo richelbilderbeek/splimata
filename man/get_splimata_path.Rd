@@ -10,5 +10,8 @@ get_splimata_path(filename)
 \item{filename}{name of the file in \code{inst/extdata}}
 }
 \description{
-Get the path to a \code{splimata} file
+\itemize{
+\item \href{https://uppsala-makerspace.github.io/loerdagskurser/volontaerer/bli_samordnare/}{example_1.md}
+\item \href{https://uppsala-makerspace.github.io/loerdagskurser/plats/}{example_2.md}
+}
 }
