@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_unique_language_codes.R
 \name{get_unique_language_codes}
 \alias{get_unique_language_codes}
-\title{Get the unique emojis}
+\title{Get the unique language codes}
 \usage{
 get_unique_language_codes(lines)
 }
@@ -10,5 +10,13 @@ get_unique_language_codes(lines)
 \item{lines}{lines of text}
 }
 \description{
-Get the unique emojis
+Get the unique language codes
+}
+\examples{
+language_codes <- get_unique_language_codes(
+  readr::read_lines(get_splimata_path("example_1.md"))
+)
+testthat::expect_equal(2, length(language_codes))
+testthat::expect_true("en" \%in\% language_codes)
+testthat::expect_true("sv" \%in\% language_codes)
 }

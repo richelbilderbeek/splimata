@@ -1,14 +1,27 @@
 Package: splimata
-Title: Convert a MkDocs file to one Markdown file per language tab.
+Title: Convert a MkDocs file to one Markdown file per language tab
+Authors@R: c(
+    person("Richèl J.C.", "Bilderbeek", email = "rjcbilderbeek@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0003-1107-7049")))
+Description: 
+    It is hard to create an MkDocs website for multiple language.
+    Even when one gets this running, the content is split up in
+    different folders, with 1 folder per language.
+    A way to keep content of the different languages together is to use tabs,
+    with one tab per language.
+    This R package allows one to split such a page with language
+    tabs into the different Markdown files, 1 per language.
 Version: 0.1
 License: GPL-3
-VignetteBuilder: knitr
 URL: https://github.com/richelbilderbeek/splimata
 BugReports: https://github.com/richelbilderbeek/splimata
 Language: en-US
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 Config/roxygen2/version: 8.0.0
+Imports:
+  dplyr,
+  emoji,
+  readr
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3

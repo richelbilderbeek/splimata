@@ -6,6 +6,15 @@
 \usage{
 count_n_unique_emojis(lines)
 }
+\arguments{
+\item{lines}{a text}
+}
 \description{
 Count the number of unique emojis
+}
+\examples{
+n <- count_n_unique_emojis(
+  lines = readr::read_lines(get_splimata_path("example_1.md"))
+)
+testthat::expect_equal(2, n)
 }

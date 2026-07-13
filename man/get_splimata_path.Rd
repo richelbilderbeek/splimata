@@ -2,10 +2,13 @@
 % Please edit documentation in R/get_splimata_path.R
 \name{get_splimata_path}
 \alias{get_splimata_path}
-\title{Get the path to a splimata file}
+\title{Get the path to a \code{splimata} file}
 \usage{
 get_splimata_path(filename)
 }
+\arguments{
+\item{filename}{name of the file in \code{inst/extdata}}
+}
 \description{
-Get the path to a splimata file
+Get the path to a \code{splimata} file
 }
