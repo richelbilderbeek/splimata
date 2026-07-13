@@ -26,7 +26,7 @@ split_text <- function(lines) {
     }
     list_indices[i] <- list_index
   }
-  n_indices <- tail(list_indices, n = 1)
+  n_indices <- utils::tail(list_indices, n = 1)
   text <- list()
   for (list_index in seq_len(n_indices)) {
     text[[list_index]] <- lines[list_indices == list_index]

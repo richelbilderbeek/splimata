@@ -9,6 +9,12 @@ test_that("use", {
   expect_true(en_path %in% output_file_names)
   sv_path <- paste0(output_file_prefix, "_sv.md")
   expect_true(sv_path %in% output_file_names)
-  #expect_true(file.exists(en_path))
-  #expect_true(file.exists(sv_path))
+  expect_true(file.exists(en_path))
+  expect_true(file.exists(sv_path))
+
+  lines <- readr::read_lines(en_path)
+  expect_true(all(emoji::emoji_detect(lines) == FALSE))
+
+  lines <- readr::read_lines(sv_path)
+  expect_true(all(emoji::emoji_detect(lines) == FALSE))
 })

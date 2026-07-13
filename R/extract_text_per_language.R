@@ -17,26 +17,30 @@ extract_text_per_language <- function(lines) {
   # Concatenate the parts for each language
   texts <- list()
   language_codes <- splimata::get_unique_language_codes(lines)
-  texts[language_codes] <- list()
+  for (language_code in language_codes) {
+    texts[[language_code]] <- list()
+  }
+
   for (i in seq_along(text)) {
     if (is.character(text[[i]])) {
       for (language_code in language_codes) {
-        texts[language_code][[i]] <- text[[i]]
+        texts[[language_code]][[i]] <- text[[i]]
       }
     }
     else {
-      testthat::expect_true(is.list(text[[language_code]]))
+      testthat::expect_true(is.list(text[[i]]))
       for (language_code in language_codes) {
-        texts[language_code][[i]] <- text[[language_code]]
+        texts[[language_code]][[i]] <- text[[i]][[language_code]]
       }
     }
   }
 
   # Convert the 1 list per language to characters
   for (language_code in language_codes) {
-    testthat::expect_true(is.list(texts[language_codes]))
-    texts[language_codes] <- unlist(texts[language_codes])
-    testthat::expect_true(is.character(texts[language_codes]))
+    testthat::expect_true(is.list(texts[[language_code]]))
+    language_text <- unlist(texts[language_code], use.names = FALSE)
+    texts[[language_code]] <- language_text
+    testthat::expect_true(is.character(texts[[language_code]]))
   }
 
   texts
