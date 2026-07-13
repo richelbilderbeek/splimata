@@ -1,6 +1,6 @@
 # split_mkdocs_tabs
 
-Convert a MkDocs file to one Markdown file per tab
+Convert a MkDocs file to one Markdown file per language tab.
 
 ## Usage
 
@@ -11,7 +11,7 @@ These languages are indicited by an emoji of the flag of their language.
 To create one file per language, do:
 
 ```r
-split_tabs(
+splimata::split_tabs(
   input_file_name = "inst/extdata/example_1.md",
   output_file_prefix = "example_1"
 )
