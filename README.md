@@ -25,7 +25,7 @@ To create one file per language, do:
 ```r
 splimata::split_tabs(
   input_file_name = "inst/extdata/example_1.md",
-  output_file_prefix = "example_1"
+  output_file_prefix = "inst/extdata/example_1"
 )
 ```
 
