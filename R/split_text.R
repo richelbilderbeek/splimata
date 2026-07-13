@@ -17,7 +17,7 @@ split_text <- function(lines) {
   list_indices <- rep(NA, length(lines))
   list_index <- 1
   for (i in seq_along(list_indices)) {
-    if (is_language_line[i] && !is_tab_line[i]) {
+    if (is_language_line[i] && !is_tab_line[i] && i != 1) {
       list_index <- list_index + 1
     } else if (i > 1 && !is_tab_line[i - 1] && is_tab_line[i]){
       list_index <- list_index + 1
