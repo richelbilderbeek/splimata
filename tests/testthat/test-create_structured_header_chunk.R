@@ -4,7 +4,6 @@ test_that("use", {
   )
   expect_true(is.list(text))
   expect_equal(length(text), 4)
-
   expect_true(is.list(create_structured_header_chunk(chunk_lines = text[[2]])))
   expect_true(is.list(create_structured_header_chunk(chunk_lines = text[[3]])))
 
@@ -13,5 +12,12 @@ test_that("use", {
   expect_true("sv" %in% names(header_chunk))
   expect_true(is.character(header_chunk[["en"]]))
   expect_true(is.character(header_chunk[["sv"]]))
+
+  # No space after a header indicator
+  expect_equal(0, sum(stringr::str_count(header_chunk[["en"]], "#  [:alpha:]")))
+  expect_equal(0, sum(stringr::str_count(header_chunk[["sv"]], "#  [:alpha:]")))
+  # No trailing whitespace
+  expect_equal(0, sum(stringr::str_count(header_chunk[["en"]], " $")))
+  expect_equal(0, sum(stringr::str_count(header_chunk[["sv"]], " $")))
 
 })

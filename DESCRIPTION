@@ -10,7 +10,7 @@ Description:
     with one tab per language.
     This R package allows one to split such a page with language
     tabs into the different Markdown files, 1 per language.
-Version: 1.0
+Version: 1.1
 License: GPL-3
 URL: https://github.com/richelbilderbeek/splimata
 BugReports: https://github.com/richelbilderbeek/splimata

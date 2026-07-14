@@ -1,3 +1,5 @@
 ^splimata\.Rproj$
 ^\.Rproj\.user$
 ^LICENSE$
+^\.github$
+^mlc_config.json$

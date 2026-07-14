@@ -35,6 +35,11 @@ create_structured_header_chunk <- function(chunk_lines) {
     language_code <- language_codes[i]
     col_index <- i + 1 # The first row contains the shared text
     lines <- paste0(split_lines[, 1],  split_lines[, col_index])
+
+    # Ensure proper Markdown
+    lines <- stringr::str_replace(lines, "#  ", "# ")
+    lines <- stringr::str_replace(lines, " $", "")
+
     header[[language_code]] <- lines
   }
   header

@@ -1,4 +1,4 @@
-test_that("use", {
+test_that("use, simple example", {
   text <- splimata::split_text(
     readr::read_lines(get_splimata_path("example_1.md"))
   )
@@ -6,7 +6,7 @@ test_that("use", {
   expect_equal(length(text), 4)
 })
 
-test_that("use", {
+test_that("use, harder example", {
   text <- splimata::split_text(
     readr::read_lines(get_splimata_path("example_2.md"))
   )
