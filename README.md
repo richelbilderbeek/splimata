@@ -2,6 +2,14 @@
 
 Convert a MkDocs file to one Markdown file per language tab.
 
+<!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
+
+Both                         |English                       |Swedish
+-----------------------------|------------------------------|------------------
+![Both](man/figures/both.png)|![English](man/figures/en.png)|![Swedish](man/figures/sv.png)
+
+<!-- markdownlint-enable MD013 -->
+
 ## The problem it fixes
 
 It is hard to create an MkDocs website for multiple language.
@@ -13,14 +21,6 @@ with one tab per language.
 
 This R package allows one to split such a page with language
 tabs into the different Markdown files, 1 per language.
-
-<!-- markdownlint-disable MD013 --><!-- Tables cannot be split up over lines, hence will break 80 characters per line -->
-
-Both                         |English                       |Swedish
------------------------------|------------------------------|------------------
-![Both](man/figures/both.png)|![English](man/figures/en.png)|![Swedish](man/figures/sv.png)
-
-<!-- markdownlint-enable MD013 -->
 
 ## Usage
 
