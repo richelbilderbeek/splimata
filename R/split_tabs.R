@@ -14,7 +14,6 @@ split_tabs <- function(input_file_name, output_file_prefix) {
   output_filenames <- rep(NA, length(texts))
   for (i in seq_along(texts)) {
     language_code <- names(texts)[i]
-    message(language_code)
     text <- texts[[language_code]]
     output_filename <- paste0(output_file_prefix, "_", language_code, ".md")
     readr::write_lines(text, output_filename)
