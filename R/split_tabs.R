@@ -8,6 +8,15 @@
 #' @export
 split_tabs <- function(input_file_name, output_file_prefix) {
   lines <- readr::read_lines(input_file_name)
+
+  if (splimata::count_n_unique_emojis(lines) < 2) {
+    stop(
+      "ERROR: too few emmojis found (i.e. ",
+      splimata::count_n_unique_emojis(lines),
+      ") in file '", input_file_name, "'"
+    )
+  }
+
   testthat::expect_true(splimata::count_n_unique_emojis(lines) > 1)
   texts <- splimata::extract_text_per_language(lines)
 
